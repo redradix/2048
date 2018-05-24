@@ -1,11 +1,3 @@
-function initGame() {
-  return null
-}
-
-function countCells(board) {
-  return 2
-}
-
 function moveRight(input) {
   return input.map(moveRowRight)
 }
@@ -57,8 +49,6 @@ function rotateClockwise(input) {
 }
 
 module.exports = {
-  initGame,
-  countCells,
   moveRight,
   moveRowLeft,
   moveRowRight,

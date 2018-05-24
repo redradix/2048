@@ -1,7 +1,5 @@
 
 const {
-  initGame,
-  countCells,
   moveRight,
   moveRowLeft,
   moveRowRight,
@@ -12,11 +10,6 @@ const {
 } = require('./lib')
 
 describe('2048', () => {
-  it('Should initialize a board with two numbers', () => {
-    const board = initGame()
-    expect(countCells(board)).toBe(2)
-  })
-
   describe('Move right', () => {
     it('Moves single value right', () => {
       const input = [0, 2, 0, 0]
