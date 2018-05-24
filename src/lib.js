@@ -14,13 +14,19 @@ function collapse(list) {
   return [list[0], ...collapse(list.slice(1))]
 }
 
-function moveRowLeft(input) {
-  const output = collapse(input.filter(cell => cell !== 0))
-  while (output.length < 4) {
-    output.push(0)
-  }
+function notEmptySpot(spot) {
+  return spot !== 0
+}
 
-  return output
+function padEmptySpotsRight(list) {
+  if (list.length === 4)
+    return list
+
+  return padEmptySpotsRight([...list, 0])
+}
+
+function moveRowLeft(input) {
+  return padEmptySpotsRight(collapse(input.filter(notEmptySpot)))
 }
 
 function moveRowRight(input) {
