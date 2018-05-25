@@ -1,4 +1,4 @@
-const { moveMatrixRight, moveRowRight, moveMatrixLeft, moveRowLeft } = require("./lib");
+const { moveMatrixRight, moveRowRight, moveMatrixLeft, moveRowLeft, moveMatrixUp, moveMatrixDown } = require("./lib");
 
 describe("2048", () => {
   describe("move right", () => {
@@ -126,4 +126,30 @@ describe("2048", () => {
       expect(moveRowLeft(row1)).toEqual(row2);
     });
   });
+
+  describe("move up", () => {
+    it("should return all zeroes if all zeroes", () => {
+      const matrix1 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      expect(moveMatrixUp(matrix1)).toEqual(matrix2);
+    });
+    it("should return all zeroes if all zeroes", () => {
+      const matrix1 = [[0, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      const matrix2 = [[0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      expect(moveMatrixUp(matrix1)).toEqual(matrix2);
+    });
+  })
+
+  describe("move down", () => {
+    it("should return all zeroes if all zeroes", () => {
+      const matrix1 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      expect(moveMatrixDown(matrix1)).toEqual(matrix2);
+    });
+    it("should return all zeroes if all zeroes", () => {
+      const matrix1 = [[0, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
+      const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0]];
+      expect(moveMatrixDown(matrix1)).toEqual(matrix2);
+    });
+  })
 });
