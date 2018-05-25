@@ -1,12 +1,40 @@
 const rowDirections = ['left', 'right']
 const columnDirections = ['up', 'down']
 
-const collapeseRows = (direction, board) => board
-const collapeseColumns = (direction, board) => board
-
-module.exports = (direction, board) => {
-  if (rowDirections.includes(direction)) {
-    return collapseRows(direction, board)
-  }
-  return collapseColumns(direction, board)
+const collapseRowToRight = (row) => {
+  return collapseRowToLeft(row.slice().reverse()).reverse()
 }
+
+const rowCollapsed = row => row.length === 0 || row.length === 1
+const shouldMove = ([head]) => head === 0
+const shouldCollapse = ([head, second]) => head === second
+
+const collapseRowToLeft = (row) => {
+  if (rowCollapsed(row)) {
+    return row
+  }
+  const [head, second, ...tail] = row
+  if (shouldMove(row)) {
+    return [...collapseRowToLeft([second, ...tail]), 0]
+  }
+  if (shouldCollapse(row)) {
+    return [head + second, ...collapseRowToLeft(tail), 0]
+  }
+  return [head, ...collapseRowToLeft([second, ...tail])]
+}
+
+const transpose = board =>
+  board.map(row => row.slice().reverse()).slice().reverse()
+
+
+const collapseRows = (direction, board) => {
+  return board.map(direction === 'left' ? collapseRowToLeft : collapseRowToRight)
+}
+
+const collapseColumns = (direction, board) => {
+  const transposed = transpose(board)
+  return transposed.map(direction === 'up' ? collapseRowToLeft : collapseRowToRight)
+}
+
+module.exports = (direction, board) =>
+  rowDirections.includes(direction) ? collapseRows(direction, board) : collapseColumns(direction, board)
