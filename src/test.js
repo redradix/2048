@@ -1,5 +1,5 @@
 
-const { collapseRow, addPairs, collapseRight } = require('./lib')
+const { collapseRow, addPairs, collapseRight, collapseBottom, collapseTop } = require('./lib')
 
 describe('2048', () => {
     describe('Collapsing Left', () => {
@@ -34,7 +34,44 @@ describe('2048', () => {
             const row = [0, 2, 0, 4]
             expect(collapseRight(row)).toEqual([0, 0, 2, 4])
         })
+        it('if it receives an array with two equal numbers and return the sum of them to the right', () => {
+            const row = [2, 2, 0, 0]
+            expect(collapseRight(row)).toEqual([0, 0, 0, 4])
+        })
+    })
 
+    describe('Collapsing bottom', () => {
+        it('if colum contains diferent numbers sult contains same numbers to the bottom', () => {
+            const matrix = [
+                [2, 0, 0, 4],
+                [0, 0, 0, 4],
+                [4, 0, 8, 0],
+                [0, 0, 0, 0]
+            ]
+            expect(collapseBottom(matrix)).toEqual([
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [2, 0, 0, 0],
+                [4, 0, 8, 8]
+            ])
+        })
+    })
+
+    describe('Collapsing top', () => {
+        it('if colum contains diferent numbers sult contains same numbers to the bottom', () => {
+            const matrix = [
+                [2, 0, 0, 4],
+                [0, 0, 0, 4],
+                [4, 0, 8, 0],
+                [0, 0, 0, 0]
+            ]
+            expect(collapseTop(matrix)).toEqual([
+                [2, 0, 8, 8],
+                [4, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+            ])
+        })
     })
 
 })
