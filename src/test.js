@@ -2,6 +2,18 @@
 const { collapseRow, addPairs, collapseRight, collapseBottom, collapseTop } = require('./lib')
 
 describe('2048', () => {
+    describe('addPairs', () => {
+        it('if it receives an array of 1 or less elements, it returns the same array', () => {
+            expect(addPairs([1])).toEqual([1])
+        })
+        it('if it receives an array with 2 equal elements, it returns the addition', () => {
+            expect(addPairs([2,2])).toEqual([4])
+        })
+        it('if first and second are different, it returns first element and recurses', () => {
+            expect(addPairs([2,4])).toEqual([2, 4])
+        })
+    })
+
     describe('Collapsing Left', () => {
         it('if row contains only one number result contains same number to the left', () => {
             const row = [0, 0, 0, 2]
@@ -14,18 +26,6 @@ describe('2048', () => {
         it('if row contains only two equal numbers, they are moved and added at the beginning', () => {
             const row = [2,0,0,2]
             expect(collapseRow(row)).toEqual([4,0,0,0])
-        })
-    })
-
-    describe('addPairs', () => {
-        it('if it receives an array of 1 or less elements, it returns the same array', () => {
-            expect(addPairs([1])).toEqual([1])
-        })
-        it('if it receives an array with 2 equal elements, it returns the addition', () => {
-            expect(addPairs([2,2])).toEqual([4])
-        })
-        it('if first and second are different, it returns first element and recurses', () => {
-            expect(addPairs([2,4])).toEqual([2, 4])
         })
     })
 
