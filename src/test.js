@@ -14,7 +14,7 @@ describe('2048', () => {
         })
     })
 
-    describe('Collapsing Left', () => {
+    describe('Collapsing Left row', () => {
         it('if row contains only one number result contains same number to the left', () => {
             const row = [0, 0, 0, 2]
             expect(collapseRow(row)).toEqual([2, 0, 0, 0])
@@ -29,7 +29,7 @@ describe('2048', () => {
         })
     })
 
-    describe('Collapsing Right', () => {
+    describe('Collapsing Right row', () => {
         it('if row contains different numbers result contains same numbers to the right', () => {
             const row = [0, 2, 0, 4]
             expect(collapseRight(row)).toEqual([0, 0, 2, 4])
@@ -40,7 +40,7 @@ describe('2048', () => {
         })
     })
 
-    describe('Collapsing bottom', () => {
+    describe('Collapsing bottom full matrix', () => {
         it('if colum contains diferent numbers sult contains same numbers to the bottom', () => {
             const matrix = [
                 [2, 0, 0, 4],
@@ -57,7 +57,7 @@ describe('2048', () => {
         })
     })
 
-    describe('Collapsing top', () => {
+    describe('Collapsing top full matrix', () => {
         it('if colum contains diferent numbers sult contains same numbers to the bottom', () => {
             const matrix = [
                 [2, 0, 0, 4],
