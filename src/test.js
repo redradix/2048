@@ -133,7 +133,7 @@ describe("2048", () => {
       const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
       expect(moveMatrixUp(matrix1)).toEqual(matrix2);
     });
-    it("should return all zeroes if all zeroes", () => {
+    it("should move 1 number up", () => {
       const matrix1 = [[0, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
       const matrix2 = [[0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
       expect(moveMatrixUp(matrix1)).toEqual(matrix2);
@@ -146,7 +146,7 @@ describe("2048", () => {
       const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
       expect(moveMatrixDown(matrix1)).toEqual(matrix2);
     });
-    it("should return all zeroes if all zeroes", () => {
+    it("should move 1 number down", () => {
       const matrix1 = [[0, 0, 0, 0], [0, 2, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]];
       const matrix2 = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 2, 0, 0]];
       expect(moveMatrixDown(matrix1)).toEqual(matrix2);
