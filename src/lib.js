@@ -13,10 +13,7 @@ const collapseRowToLeft = (row) => {
   if (rowCollapsed(row)) {
     return row
   }
-  const [head, second, ...tail] = row
-  if (shouldMove(row)) {
-    return [...collapseRowToLeft([second, ...tail]), 0]
-  }
+  const [head, second, ...tail] = row.filter(x => x).concat([0, 0, 0, 0]).slice(0, row.length)
   if (shouldCollapse(row)) {
     return [head + second, ...collapseRowToLeft(tail), 0]
   }
